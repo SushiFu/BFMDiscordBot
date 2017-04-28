@@ -10,9 +10,11 @@
 - [Node.js](https://nodejs.org) & [npm](https://www.npmjs.com/)
 - [Yarn](https://yarnpkg.com)
 
-### Install (before anything else)
+### Setup (before anything else)
 ```bash
 $ yarn install
+# You also need to set DISCORD_TOKEN in .env file
+$ echo "DISCORD_TOKEN={YOUR_MAGIC_TOKEN}" > .env
 ```
 
 ### Build
