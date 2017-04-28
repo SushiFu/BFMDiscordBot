@@ -87,4 +87,7 @@ jspm_packages
 # Db Datas
 data
 
+# Env secrets
+.env
+
 # End of https://www.gitignore.io/api/macos,visualstudiocode,node
