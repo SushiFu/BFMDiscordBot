@@ -1,0 +1,9 @@
+{
+  "name": "BaleineBot",
+  "version": "1.0.0",
+  "description": "Discord Bot for \"La Baleine\"",
+  "main": "server.js",
+  "repository": "https://SushiFu@github.com/SushiFu/BaleineBot.git",
+  "author": "SushiFu <SushiFu@gmx.fr>",
+  "license": "MIT"
+}
