@@ -1,12 +1,18 @@
-import discord from "./server/discord";
+import { clientLogin } from "./server/discord";
 import logger from "./server/logger";
+import { isAlive as isMongoAlive } from "./server/mongo";
 
-discord.on("ready", () => {
-    logger.info("BaleineBot is started");
-});
+import "./commands/all";
 
-discord.on("message", message => {
-    if (message.content === "ping") {
-        message.channel.sendMessage("pong");
-    }
-});
+isMongoAlive()
+    .then(() => {
+        logger.info("Mongo is alive");
+        return clientLogin();
+    })
+    .then(() => {
+        logger.info("BaleineBot is started");
+    })
+    .catch(err => {
+        logger.error(err);
+        process.exit(1);
+    });
