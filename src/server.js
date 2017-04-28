@@ -6,7 +6,7 @@ discord.on("ready", () => {
 });
 
 discord.on("message", message => {
-    if (message.content === "hello") {
-        message.reply("world");
+    if (message.content === "ping") {
+        message.channel.sendMessage("pong");
     }
 });
