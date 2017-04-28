@@ -3,6 +3,11 @@ import config from "./config";
 
 const client = new Discord.Client();
 
-client.login(config.DISCORD_TOKEN);
+/**
+ * @returns {Promise}
+ */
+export function clientLogin() {
+    return client.login(config.DISCORD_TOKEN);
+}
 
 export default client;
