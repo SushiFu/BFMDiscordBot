@@ -12,15 +12,12 @@ services:
         depends_on:
             - mongodb
         ports:
-            - 3636:3636
             - 5858:5858
         volumes:
             - .:/app
         environment:
             - NODE_ENV=development
             - LOG_LEVEL=trace
-            - API_URL=http://localhost
-            - API_PORT=3636
             - MONGO_URL=mongodb://mongodb:27017/baleinebot
 
     # bot-test:
@@ -34,8 +31,6 @@ services:
     #     environment:
     #         - NODE_ENV=test
     #         - LOG_LEVEL=debug
-    #         - API_URL=http://localhost
-    #         - API_PORT=3637
     #         - MONGO_URL=mongodb://mongodb:27017/baleinebot
 
 volumes:
