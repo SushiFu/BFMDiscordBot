@@ -9,7 +9,7 @@
   "scripts": {
     "build": "gulp build",
     "lint": "gulp lint",
-    "start": "yarn build && docker-compose run --rm --service-ports carrelage",
+    "start": "yarn build && docker-compose run --rm --service-ports bot",
     "reset": "docker-compose down && docker volume prune"
   },
   "devDependencies": {
