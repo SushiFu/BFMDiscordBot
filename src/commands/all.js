@@ -1,2 +1,1 @@
-import "./ping";
 import "./twitter";
