@@ -69,8 +69,8 @@ function deleteUsertags(message) {
 }
 
 function sendTweet(tweet) {
-    const usertag = tweet.retweeted_status ? tweet.retweeted_status.user.screen_name : tweet.user.screen_name;
-    const id = tweet.retweeted_status ? tweet.retweeted_status.id_str : tweet.id_str;
+    const usertag = tweet.user.screen_name;
+    const id = tweet.id_str;
     const url = util.format("https://twitter.com/%s/status/%s", usertag, id);
     logger.info("Tweet:", url);
     discord.sendDefault(url);
