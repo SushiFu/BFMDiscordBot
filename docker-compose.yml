@@ -19,6 +19,12 @@ services:
             - NODE_ENV=development
             - LOG_LEVEL=trace
             - DISCORD_TOKEN=${DISCORD_TOKEN}
+            - DISCORD_CHAN_ID=${DISCORD_CHAN_ID}
+            - DISCORD_CMD_CHAN_ID=${DISCORD_CMD_CHAN_ID}
+            - TWITTER_CONSUMER_KEY=${TWITTER_CONSUMER_KEY}
+            - TWITTER_CONSUMER_SECRET=${TWITTER_CONSUMER_SECRET}
+            - TWITTER_TOKEN=${TWITTER_TOKEN}
+            - TWITTER_TOKEN_SECRET=${TWITTER_TOKEN_SECRET}
             - MONGO_URL=mongodb://mongodb:27017/baleinebot
 
     # bot-test:

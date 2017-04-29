@@ -2,6 +2,7 @@
 
 ## Features
 - Ping Pong request
+- Twitter Following
 - ...
 
 ## Prerequisites
@@ -13,8 +14,13 @@
 ### Setup (before anything else)
 ```bash
 $ yarn install
-# You also need to set DISCORD_TOKEN in .env file
+# You also need to set some vars in .env file
 $ echo "DISCORD_TOKEN={YOUR_MAGIC_TOKEN}" > .env
+$ echo "DISCORD_CHAN_ID={YOUR_MAGIC_TOKEN}" > .env
+$ echo "TWITTER_CONSUMER_KEY={YOUR_MAGIC_TOKEN}" > .env
+$ echo "TWITTER_CONSUMER_SECRET={YOUR_MAGIC_TOKEN}" > .env
+$ echo "TWITTER_TOKEN={YOUR_MAGIC_TOKEN}" > .env
+$ echo "TWITTER_TOKEN_SECRET={YOUR_MAGIC_TOKEN}" > .env
 ```
 
 ### Build
