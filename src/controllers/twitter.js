@@ -45,6 +45,34 @@ function saveTwitterUsers(usertags) {
     return Promise.all(saving);
 }
 
+/**
+ * Delete twitter user
+ * @param {String} usertag
+ * @returns {Promise}
+ */
+function deleteTwitterUser(usertag) {
+    return TwitterUser.delete(usertag);
+}
+
+/**
+ * Delete multiple twitter users
+ * @param {String[]} usertags
+ * @returns {Promise}
+ */
+function deleteTwitterUsers(usertags) {
+    const deleting = [];
+    usertags.forEach(tag => deleting.push(deleteTwitterUser(tag)));
+    return Promise.all(deleting);
+}
+
+/**
+ * List all twitter users
+ * @returns {Promise}
+ */
+function listTwitterUsers() {
+    return TwitterUser.all();
+}
+
 let stream;
 /**
  * Reload Twitter follow stream
@@ -65,4 +93,4 @@ function reloadStream(callback) {
         });
 }
 
-export default { saveTwitterUsers, reloadStream };
+export default { saveTwitterUsers, listTwitterUsers, deleteTwitterUsers, reloadStream };

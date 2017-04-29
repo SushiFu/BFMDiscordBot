@@ -44,6 +44,13 @@ TwitterUserSchema.statics = {
         return user.save();
     },
     /**
+     * Delete twitter user
+     * @param {String} userTag - Twitter user tag
+     */
+    delete(userTag) {
+        return this.deleteOne({ userTag: userTag }).then(() => userTag);
+    },
+    /**
      * Get all twitter users
      * @returns {Promise}
      */
