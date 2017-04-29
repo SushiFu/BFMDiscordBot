@@ -1,0 +1,53 @@
+stages:
+    - build
+    - lint
+    - release
+    - deploy
+
+variables:
+    HUB_URL: "hub.036.fr/sushifu/baleinebot"
+    TEST_TAG: "testing"
+    TAG: "latest"
+
+before_script:
+    - docker login -u gitlab-ci-token -p $CI_BUILD_TOKEN hub.036.fr
+
+build:
+    stage: build
+    script:
+        - docker build --pull -t $HUB_URL:$TEST_TAG .
+        - docker push $HUB_URL:$TEST_TAG
+    only:
+        - master
+    
+lint:
+    stage: lint
+    script:
+        - docker pull $HUB_URL:$TEST_TAG
+        - docker-compose -f docker-compose.ci.yml run --rm bot-lint
+    only:
+        - master
+    when: on_success
+
+release:
+    stage: release
+    script:
+        - docker pull $HUB_URL:$TEST_TAG
+        - docker tag $HUB_URL:$TEST_TAG $HUB_URL:$TAG
+        - docker push $HUB_URL:$TAG
+    only:
+        - master
+    when: on_success
+
+deploy_staging:
+    stage: deploy
+    tags:
+        - deploy
+    environment:
+        name: production
+    script:
+        - docker-compose -f docker-compose.prod.yml pull baleine-bot
+        - docker-compose -f docker-compose.prod.yml up -d --force-recreate baleine-bot
+    only:
+        - master
+    when: on_success

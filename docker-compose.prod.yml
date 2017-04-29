@@ -1,0 +1,26 @@
+version: "3"
+services: 
+    baleine-bot:
+        image: $HUB_URL:$TAG
+        networks: 
+            - backend
+            - db
+        environment:
+            - NODE_ENV=production
+            - LOG_LEVEL=info
+
+            - DISCORD_TOKEN=${DISCORD_TOKEN}
+            - DISCORD_CHAN_ID=${DISCORD_CHAN_ID}
+            - DISCORD_CMD_CHAN_ID=${DISCORD_CMD_CHAN_ID}
+            - TWITTER_CONSUMER_KEY=${TWITTER_CONSUMER_KEY}
+            - TWITTER_CONSUMER_SECRET=${TWITTER_CONSUMER_SECRET}
+            - TWITTER_TOKEN=${TWITTER_TOKEN}
+            - TWITTER_TOKEN_SECRET=${TWITTER_TOKEN_SECRET}
+
+            - MONGO_URL=mongodb://mongo-dev:27017/baleinebot
+
+networks:
+    backend:
+        external: true
+    db:
+        external: true
