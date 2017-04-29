@@ -6,6 +6,7 @@ const params = {
     LOG_LEVEL: process.env.LOG_LEVEL,
     DISCORD_TOKEN: process.env.DISCORD_TOKEN,
     DISCORD_CHAN_ID: process.env.DISCORD_CHAN_ID,
+    DISCORD_CMD_CHAN_ID: process.env.DISCORD_CMD_CHAN_ID,
     MONGO_URL: process.env.MONGO_URL,
     TWITTER_CONSUMER_KEY: process.env.TWITTER_CONSUMER_KEY,
     TWITTER_CONSUMER_SECRET: process.env.TWITTER_CONSUMER_SECRET,
