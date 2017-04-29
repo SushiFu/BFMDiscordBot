@@ -6,6 +6,10 @@ const params = {
     LOG_LEVEL: process.env.LOG_LEVEL,
     DISCORD_TOKEN: process.env.DISCORD_TOKEN,
     MONGO_URL: process.env.MONGO_URL,
+    TWITTER_CONSUMER_KEY: process.env.TWITTER_CONSUMER_KEY,
+    TWITTER_CONSUMER_SECRET: process.env.TWITTER_CONSUMER_SECRET,
+    TWITTER_TOKEN: process.env.TWITTER_TOKEN,
+    TWITTER_TOKEN_SECRET: process.env.TWITTER_TOKEN_SECRET
 };
 
 Object.keys(params).forEach((key) => {
