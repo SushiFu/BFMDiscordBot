@@ -4,10 +4,32 @@ import config from "./config";
 const client = new Discord.Client();
 
 /**
+ * Login Discord Bot
  * @returns {Promise}
  */
-export function clientLogin() {
+function clientLogin() {
     return client.login(config.DISCORD_TOKEN);
 }
 
-export default client;
+/**
+ * Register message listener
+ * @param {Function} callback 
+ */
+function onMessage(callback) {
+    client.on("message", message => {
+        if (message.channel.id === config.DISCORD_CHAN_ID) {
+            callback(message);
+        }
+    });
+}
+
+/**
+ * Send message on default channel
+ * @param {String} message
+ * @returns {Promise}
+ */
+function sendDefault(message) {
+    return client.channels.get(config.DISCORD_CHAN_ID).sendMessage(message);
+}
+
+export default { client, clientLogin, onMessage, sendDefault };
