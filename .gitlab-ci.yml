@@ -39,7 +39,7 @@ release:
         - master
     when: on_success
 
-deploy_staging:
+deploy_production:
     stage: deploy
     tags:
         - deploy
