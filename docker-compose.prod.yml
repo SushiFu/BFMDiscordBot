@@ -1,6 +1,7 @@
 version: "3"
 services: 
     baleine-bot:
+        restart: always
         image: $HUB_URL:$TAG
         networks: 
             - backend
