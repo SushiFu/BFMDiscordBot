@@ -15,7 +15,7 @@ before_script:
 build:
     stage: build
     script:
-        - docker build --pull -t $HUB_URL:$TEST_TAG .
+        - docker build -t $HUB_URL:$TEST_TAG .
         - docker push $HUB_URL:$TEST_TAG
     only:
         - master
