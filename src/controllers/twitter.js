@@ -88,7 +88,9 @@ function reloadStream(callback) {
         .then(ids => {
             stream = twitter.stream("statuses/filter", { follow: ids });
             stream.on("tweet", tweet => {
-                callback(tweet);
+                if (!tweet.retweeted_status) {
+                    callback(tweet);
+                }
             });
         });
 }
