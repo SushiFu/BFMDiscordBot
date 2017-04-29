@@ -28,6 +28,7 @@
     "bunyan": "^1.8.10",
     "discord.js": "^11.0.0",
     "mongoose": "^4.9.6",
-    "twit": "^2.2.5"
+    "twit": "^2.2.5",
+    "twitter-text": "^1.14.3"
   }
 }
