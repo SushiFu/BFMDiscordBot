@@ -30,9 +30,7 @@ function addUsertags(message) {
                 twitterCtrl.reloadStream(sendTweet);
             }
         })
-        .catch(err => {
-            logger.error(err);
-        });
+        .catch(err => logger.error(err));
 }
 
 function listUsertags() {
@@ -45,9 +43,7 @@ function listUsertags() {
                 discord.sendCmdDefault(message);
             }
         })
-        .catch(err => {
-            logger.error(err);
-        });
+        .catch(err => logger.error(err));
 }
 
 function deleteUsertags(message) {
@@ -63,17 +59,26 @@ function deleteUsertags(message) {
                 twitterCtrl.reloadStream(sendTweet);
             }
         })
-        .catch(err => {
-            logger.error(err);
-        });
+        .catch(err => logger.error(err));
 }
 
 function sendTweet(tweet) {
-    const usertag = tweet.user.screen_name;
-    const id = tweet.id_str;
-    const url = util.format("https://twitter.com/%s/status/%s", usertag, id);
-    logger.info("Tweet:", url);
-    discord.sendDefault(url);
+    let msg = "";
+    if (tweet.retweeted_status) {
+        const rt = util.format("**RT par @%s**", tweet.user.screen_name);
+        const usertag = tweet.retweeted_status.user.screen_name;
+        const id = tweet.retweeted_status.id_str;
+        const url = util.format("https://twitter.com/%s/status/%s", usertag, id);
+        msg += rt + "\n" + url;
+    }
+    else {
+        const usertag = tweet.user.screen_name;
+        const id = tweet.id_str;
+        const url = util.format("https://twitter.com/%s/status/%s", usertag, id);
+        msg += url;
+    }
+    logger.info("Tweet:", msg);
+    discord.sendDefault(msg);
 }
 
 twitterCtrl.reloadStream(sendTweet);
