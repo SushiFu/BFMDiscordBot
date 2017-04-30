@@ -28,7 +28,8 @@
     "bunyan": "^1.8.10",
     "discord.js": "^11.0.0",
     "mongoose": "^4.9.6",
-    "scraperjs": "^1.2.0",
+    "node-schedule": "^1.2.1",
+    "scrape-it": "^3.3.2",
     "twit": "^2.2.5",
     "twitter-text": "^1.14.3"
   }
