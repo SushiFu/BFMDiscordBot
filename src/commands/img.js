@@ -30,7 +30,7 @@ discord.onMessage(message => {
 function create(message) {
     const split = message.content.split(" ");
     if (split.length === 3) {
-        const command = split[1].trim().toLowerCase();
+        const command = split[1].trim().toLowerCase().replace("_", " ");
         const url = split[2].trim();
         imgCtrl.saveCommandImage(command, url)
             .then(cmdImg => {
@@ -57,7 +57,7 @@ function list() {
 function remove(message) {
     const split = message.content.split(" ");
     if (split.length === 2) {
-        const command = split[1].trim().toLowerCase();
+        const command = split[1].trim().toLowerCase().replace("_", " ");
         imgCtrl.deleteCommandImage(command)
             .then(cmd => {
                 if (cmd) {
