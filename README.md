@@ -3,6 +3,7 @@
 ## Features
 - Twitter Following
 - [Bitcoin Ticker News](http://bitcointicker.co/news/) Following
+- Image Commands Creator
 - ...
 
 ## Prerequisites
