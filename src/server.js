@@ -10,7 +10,7 @@ isMongoAlive()
         return discord.clientLogin();
     })
     .then(() => {
-        logger.info("BaleineBot is started");
+        logger.info("BFMBaleine is started");
     })
     .catch(err => {
         logger.error(err);
