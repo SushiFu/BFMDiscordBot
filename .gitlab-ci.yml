@@ -5,7 +5,7 @@ stages:
     - deploy
 
 variables:
-    HUB_URL: "hub.036.fr/sushifu/baleinebot"
+    HUB_URL: "hub.036.fr/sushifu/bfmbaleine"
     TEST_TAG: "testing"
     TAG: "latest"
 
@@ -46,8 +46,8 @@ deploy_production:
     environment:
         name: production
     script:
-        - docker-compose -f docker-compose.prod.yml pull baleine-bot
-        - docker-compose -f docker-compose.prod.yml up -d --force-recreate baleine-bot
+        - docker-compose -f docker-compose.prod.yml pull bot
+        - docker-compose -f docker-compose.prod.yml up -d --force-recreate bot
     only:
         - master
     when: on_success

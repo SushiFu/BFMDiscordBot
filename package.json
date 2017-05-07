@@ -1,9 +1,9 @@
 {
-  "name": "BaleineBot",
+  "name": "BFMBaleine",
   "version": "1.4.0",
-  "description": "Discord Bot for \"La Baleine\"",
+  "description": "News Aggregator Discord Bot for \"La Baleine\"",
   "main": "dist/server.js",
-  "repository": "https://SushiFu@github.com/SushiFu/BaleineBot.git",
+  "repository": "https://github.com/LaBaleineFr/BFMBaleine.git",
   "author": "SushiFu <SushiFu@gmx.fr>",
   "license": "MIT",
   "scripts": {
