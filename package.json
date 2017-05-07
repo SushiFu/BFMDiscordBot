@@ -1,6 +1,6 @@
 {
   "name": "BFMBaleine",
-  "version": "1.4.0",
+  "version": "1.5.0",
   "description": "News Aggregator Discord Bot for \"La Baleine\"",
   "main": "dist/server.js",
   "repository": "https://github.com/LaBaleineFr/BFMBaleine.git",
