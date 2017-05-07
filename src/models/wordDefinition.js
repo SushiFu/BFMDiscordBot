@@ -8,8 +8,12 @@ export const WordDefinitionSchema = new mongoose.Schema({
     },
     definition: {
         type: String,
-        required: true,
         unique: false,
+    },
+    valid: {
+        type: Boolean,
+        required: true,
+        default: false
     }
 }, {
         timestamps: {}
@@ -41,14 +45,28 @@ WordDefinitionSchema.statics = {
         const wordDefinition = new this();
         wordDefinition.word = word;
         wordDefinition.definition = definition;
+        wordDefinition.valid = definition !== undefined;
         return wordDefinition.save();
     },
+
+    /**
+     * Update WordDefinition
+     * @param {String} wordDefinition - WordDefinition to be updated
+     * @param {String} newDefinition - word definition to update
+     * @return {Promise}
+     */
+    update(wordDefinition, newDefinition) {
+        wordDefinition.definition = newDefinition;
+        wordDefinition.valid = newDefinition !== undefined;
+        return wordDefinition.save();
+    },
+
     /**
      * Get WordDefinition
      * @param {String} word - Word defined
      */
-    get(word) {
-        return this.findOne({ word: word });
+    get(word, valid = true) {
+        return this.findOne({ word: word, valid: valid });
     },
     /**
      * Delete WordDefinition
@@ -59,10 +77,11 @@ WordDefinitionSchema.statics = {
     },
     /**
      * Get all WordDefinition
+     * @param {Boolean} valid - Find the valid or not definition
      * @returns {Promise}
      */
-    all() {
-        return this.find({});
+    all(valid = true) {
+        return this.find({valid: valid});
     }
 };
 

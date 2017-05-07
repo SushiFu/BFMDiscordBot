@@ -10,6 +10,7 @@ const commands = {
   add: "helpAdd",
   delete: "helpDel",
   list: "helpList",
+  listUnvalid: "helpUnvalid",
   get: "help",
 };
 
@@ -35,22 +36,30 @@ function getWordDefinition(channel, word) {
         channel.send(wordDefinition.definition);
       }
       else {
-        channel.send(`Can't find a definition for the word ${word}`);
+        channel.send(`Can't find a definition for the word ${word} (But we noted it!)`);
+
+        return wordDefinitionCtrl.saveWordDefinition(word);
       }
+    })
+    .then(newWord => {
+      const log = `Definition for ${newWord.word} has been added for later`;
+      logger.info(log);
     })
     .catch((err) => {
       logger.error(err);
     });
 }
 
-function listWordDefinition(channel) {
-  wordDefinitionCtrl.listWordDefinition()
+function listWordDefinition(channel, valid) {
+  wordDefinitionCtrl.listWordDefinition(valid)
     .then(wordDefinitions => {
       const definitions = wordDefinitions.map((wordDefinition) => {
         return wordDefinition.word;
       });
       logger.info(definitions);
-      channel.send(definitions);
+      if (definitions.length > 0) {
+        channel.send(definitions);
+      }
     })
     .catch((err) => {
       logger.error(err);
@@ -74,6 +83,9 @@ discord.onMessage(message => {
     else if (command === commands.delete) {
       deleteWordDefinition(params);
     }
+    else if (command === commands.listUnvalid) {
+      listWordDefinition(message.channel, false);
+    }
   }
 });
 
@@ -83,7 +95,19 @@ function addWordDefinition(message) {
   if (!isNil(extract) && extract.length === 3) {
     const word = extract[1];
     const definition = extract[2];
-    wordDefinitionCtrl.saveWordDefinition(word, definition)
+
+    //Check if wordDefinition for non valid exists
+    wordDefinitionCtrl.getWordDefinition(word, false)
+      .then(wordDefinition => {
+        if (isNil(wordDefinition)) {
+          //Create a new one
+          return wordDefinitionCtrl.saveWordDefinition(word, definition);
+        }
+        else {
+          //Put the existing one
+          return wordDefinitionCtrl.updateWordDefinition(wordDefinition, definition);
+        }
+      })
       .then(wordDefinition => {
         const log = `Definition for ${wordDefinition.word} has been added: \n${wordDefinition.definition}`;
         logger.info(log);
