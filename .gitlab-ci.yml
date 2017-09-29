@@ -42,7 +42,7 @@ release:
 deploy_production:
     stage: deploy
     tags:
-        - deploy
+        - lb2
     environment:
         name: production
     script:

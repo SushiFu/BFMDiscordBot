@@ -3,7 +3,9 @@ services:
     bot:
         restart: always
         image: $HUB_URL:$TAG
-        network_mode: "container:pia_vpn_1"
+        networks: 
+            - backend
+            - db
         environment:
             - NODE_ENV=production
             - LOG_LEVEL=info
@@ -17,3 +19,9 @@ services:
             - TWITTER_TOKEN_SECRET=${TWITTER_TOKEN_SECRET}
 
             - MONGO_URL=mongodb://mongo-dev:27017/baleinebot
+
+networks:
+    backend:
+        external: true
+    db:
+        external: true
