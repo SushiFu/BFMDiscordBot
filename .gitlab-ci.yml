@@ -42,12 +42,12 @@ release:
 deploy_production:
     stage: deploy
     tags:
-        - lb2
+        - deploy
     environment:
         name: production
     script:
-        - docker-compose -f docker-compose.prod.yml pull bot
-        - docker-compose -f docker-compose.prod.yml up -d --force-recreate bot
+        - docker-compose -f docker-compose.prod.yml pull
+        - docker-compose -f docker-compose.prod.yml up -d --force-recreate
     only:
         - master
     when: on_success
