@@ -1,6 +1,6 @@
 version: "3"
 services: 
-    bot:
+    bot-us:
         restart: always
         image: $HUB_URL:$TAG
         networks: 
@@ -10,15 +10,35 @@ services:
             - NODE_ENV=production
             - LOG_LEVEL=info
 
-            - DISCORD_TOKEN=${DISCORD_TOKEN}
-            - DISCORD_CHAN_ID=${DISCORD_CHAN_ID}
-            - DISCORD_CMD_CHAN_ID=${DISCORD_CMD_CHAN_ID}
+            - DISCORD_TOKEN=${DISCORD_TOKEN_FR}
+            - DISCORD_CHAN_ID=${DISCORD_CHAN_ID_FR}
+            - DISCORD_CMD_CHAN_ID=${DISCORD_CMD_CHAN_ID_FR}
             - TWITTER_CONSUMER_KEY=${TWITTER_CONSUMER_KEY}
             - TWITTER_CONSUMER_SECRET=${TWITTER_CONSUMER_SECRET}
             - TWITTER_TOKEN=${TWITTER_TOKEN}
             - TWITTER_TOKEN_SECRET=${TWITTER_TOKEN_SECRET}
 
-            - MONGO_URL=mongodb://mongo-dev:27017/baleinebot
+            - MONGO_URL=mongodb://mongo-dev:27017/bfmus
+
+    bot-fr:
+        restart: always
+        image: $HUB_URL:$TAG
+        networks: 
+            - backend
+            - db
+        environment:
+            - NODE_ENV=production
+            - LOG_LEVEL=info
+
+            - DISCORD_TOKEN=${DISCORD_TOKEN_US}
+            - DISCORD_CHAN_ID=${DISCORD_CHAN_ID_US}
+            - DISCORD_CMD_CHAN_ID=${DISCORD_CMD_CHAN_ID_US}
+            - TWITTER_CONSUMER_KEY=${TWITTER_CONSUMER_KEY}
+            - TWITTER_CONSUMER_SECRET=${TWITTER_CONSUMER_SECRET}
+            - TWITTER_TOKEN=${TWITTER_TOKEN}
+            - TWITTER_TOKEN_SECRET=${TWITTER_TOKEN_SECRET}
+
+            - MONGO_URL=mongodb://mongo-dev:27017/bfmfr
 
 networks:
     backend:
