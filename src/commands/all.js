@@ -1,2 +1,2 @@
 import "./twitter";
-import "./btcticker";
+// import "./btcticker";
