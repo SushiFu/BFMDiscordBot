@@ -1,4 +1,4 @@
-# BFMBaleine Discord Bot
+# BFM Discord Bot
 
 ## Features
 - Twitter Following
