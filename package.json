@@ -16,7 +16,7 @@
     "babel-cli": "^6.24.1",
     "babel-preset-env": "^1.4.0",
     "del": "^2.2.2",
-    "eslint": "^3.19.0",
+    "eslint": "^4.18.2",
     "gulp": "gulpjs/gulp#4.0",
     "gulp-babel": "^6.1.2",
     "gulp-eslint": "^3.0.1",
