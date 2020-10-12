@@ -27,7 +27,7 @@
   "dependencies": {
     "bunyan": "^1.8.10",
     "discord.js": "^11.0.0",
-    "mongoose": "^4.9.6",
+    "mongoose": "^5.7.5",
     "node-schedule": "^1.2.1",
     "scrape-it": "^3.3.2",
     "twit": "^2.2.5",
